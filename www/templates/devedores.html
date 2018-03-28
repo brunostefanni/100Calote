@@ -1,0 +1,94 @@
+<style>
+.item{
+	min-height: 25px !important;
+}
+.item.item-divider {
+	border-bottom: solid 1px #414141 !important;		
+}
+.item.item-total{
+	margin-top: -10px;
+    margin-bottom: 18px;	
+}
+#incluir{
+	top: -3%;
+}
+.ion-edit:before {
+	font-size: 20px !important;
+ }
+</style>
+<ion-view id="page9" cache-view="false" >
+	<ion-nav-title>
+		<i class='icon ion-happy-outline'></i> <span translate="devedores">Devedores</span>
+	</ion-nav-title>
+    <ion-content overflow-scroll="true" padding="true" class="has-header" ng-controller="devedoresCtrl" style="background: url(img/login.jpg) center; background-size: cover;">
+        <ion-refresher
+            pulling-text="Baixe para atualizar..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        
+        <script id="my-modal.html" type="text/ng-template">
+		  <ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;">              
+			<ion-header-bar class="bar-dark">
+			  <h1 class="title" translate="editar">Editar</h1>
+              <div class="button button-clear" ng-click="closeModal()"><span class="icon ion-close"></span></div>
+			</ion-header-bar>
+			<ion-content>				
+                <form class="list">
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Devedor</span>
+                        <input type="text" placeholder="Devedor" ng-model="item.nomeDevedor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">E-mail</span>
+                        <input type="text" placeholder="E-mail" ng-model="item.emailDevedor">
+                    </label>
+                    <label class="item item-input item-floating-label">
+                        <span class="input-label">Valor</span>
+                        <input type="number" placeholder="Valor"  ng-model="item.valor">
+                    </label>
+                    <!--<label class="item item-input">
+                        <span class="input-label">Data</span>
+                        <input placeholder="" type="date" ng-model="editData">
+                    </label>-->
+                    <label class="item item-select">
+                        <span class="input-label">Cobrança</span>
+                        <select ng-model="item.cobranca">
+                            <option value="S">Semanal</option>
+                            <!--<option value="D">Diária</option>-->
+                            <option value="Q">Quinzenal</option>
+                            <option value="M">Mensal</option>
+                        </select>
+                    </label>
+                </form>
+                <button id="novo-button8" class="button button-full ink button-positive-900 icon-right ion-checkmark-round" ng-click="salvar()">Salvar</button>
+                <button id="novo-button8" class="button button-full ink button-positive button-outline icon-right ion-thumbsup" ng-click="quitar()">Quitar</button>
+			</ion-content>
+		  </ion-modal-view>
+		</script>
+		
+		<button id="incluir" class="button button-full ink button-positive-900 icon-right ion-plus" ng-click="novaDespesa()">Incluir</button>
+		
+        <div class="list animate-fade-slide-in-right">
+		  <span ng-show="datas.length" ng-repeat="item in datas track by $index">
+			  <div class="item item-divider" >
+				{{::item.Nome}} 
+			  </div>			  
+			  <a class="item item-icon-right" href="#/side-menu21/devedores" ng-click="openModal($parent.$index+'_'+subItem.id)" ng-repeat="subItem in item.Detalhes track by $index">
+				<i class="icon ion-edit"></i>				
+                {{::subItem.descricao}} / {{::moeda}} {{::subItem.valor}}	<br/>
+                <!--<span ng-if="subItem.data">
+                    <h5>desde {{::subItem.data | date:'dd/MM/yyyy'}}</h5>
+                </span>-->
+			  </a>
+			  <div class="item item-divider item-total" >
+				{{::total}} {{::item.Valor}}
+			  </div>
+		  </span>
+          <span ng-hide="datas.length">
+              <div class="item item-divider" >
+				Que bom, você não deve ninguém!
+			  </div>
+          </span>
+		</div>
+    </ion-content>
+</ion-view>

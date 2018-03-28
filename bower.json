@@ -1,0 +1,13 @@
+{
+  "name": "HelloIonic",
+  "private": "true",
+  "devDependencies": {
+    "ionic": "driftyco/ionic-bower#1.2.4"
+  },
+  "dependencies": {
+	"angular": "1.2.15",
+    "robotodraft": "^1.1.0",
+    "ionic-material": "^0.4.2",
+    "ion-md-input": "^1.0.4"
+  }
+}

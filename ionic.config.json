@@ -1,0 +1,12 @@
+{
+  "name": "100calote",
+  "app_id": "db71a7db",
+  "integrations": {},
+  "type": "ionic1",
+  "watchPatterns": [
+    "scss/**/*",
+    "www/**/*",
+    "!www/lib/**/*",
+    "!www/**/*.map"
+  ]
+}

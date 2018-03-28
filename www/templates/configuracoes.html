@@ -1,0 +1,20 @@
+<ion-view>
+	<ion-nav-title>
+		<i class='icon ion-settings'></i> <span translate="configuracoes">Configurações</span>
+	</ion-nav-title>
+    <ion-content overflow-scroll="true" padding="true" class="has-header" style="background: url(img/login.jpg) center; background-size: cover;" ng-controller="configController">		
+		<label class="item item-input item-select">
+			<div class="input-label">
+				<span translate="idioma">Idioma</span>
+			</div>
+			<select ng-model="language"  ng-change="changeLanguage()" style="background: url(img/login.jpg) center; background-size: cover;">
+				<option value="PT-BR" ng-selected="true" translate="BUTTON_LANG_PT-BR">Português</option>
+				<option value="EN" translate="BUTTON_LANG_EN" >Inglês</option>
+			</select>
+		</label>		
+				
+		<ion-toggle toggle-class="toggle-positive" ng-checked="true" ng-model="notificacoes"><span translate="notificacoes">Receber notificações?</span></ion-toggle>
+		
+		<button id="incluir" class="button button-full ink button-positive-900 icon-right ion-checkmark-round" ng-click="salvar()" translate="salvar">Salvar</button>
+	</ion-content>
+</ion-view>

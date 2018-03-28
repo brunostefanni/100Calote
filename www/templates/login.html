@@ -1,0 +1,32 @@
+<style>
+	.content{
+	    top: -5%;
+	}
+	h1{
+		color: rgba(0,0,0,.6);
+	}
+	.item-md-label .input-label{
+		color: black;
+		font-weight: bold;
+	}
+</style>
+<ion-view title="100Calote" id="page7" cache-view="false">    
+    <ion-content padding="true" ng-controller="loginCtrl" style="background: url(img/login.jpg) center; background-size: cover;">        
+		<div class="hero flat">
+            <div class="content">
+                <div class="app-icon"></div>
+                <h1>100Calote</h1>
+            </div>
+        </div>
+
+		<div class="list">
+            <ion-md-input placeholder="E-mail" highlight-color="positive" type="email" ng-model="email" ></ion-md-input>
+            <ion-md-input placeholder="Senha" highlight-color="energized" type="password" ng-model="senha" ng-keypress="verificaEnter($event)"></ion-md-input>
+			<ion-toggle toggle-class="toggle-positive" ng-checked="true" ng-model="lembrar">Lembrar</ion-toggle>
+        </div>        
+		
+		<button id="login-button4" class="button button-full ink button-positive icon-right ion-log-in" ng-click="login()">Login</button>
+		<a ui-sref="signup" id="login-button5" class="button button-full ink button-positive button-outline">Ou criar conta</a>		
+		<button class="button button-full ink  button-outline button-assertive" ng-click="login()">Esqueceu a senha?</button>		
+    </ion-content>
+</ion-view>

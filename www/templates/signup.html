@@ -1,0 +1,26 @@
+<style>
+    .has-error {
+		border: 1px solid red !important;
+    }
+	.content{
+	    top: -5%;
+	}
+</style>
+
+<ion-view title="Novo usuário" id="page8" hide-back-button="false" cache-view="false" style="background: url(img/login.jpg) center; background-size: cover">    
+    <ion-content overflow-scroll="true" padding="true" class="has-header" ng-controller="signupCtrl">
+		<div class="hero flat">
+            <div class="content">
+                <div class="app-icon"></div>
+                <h1>100Calote</h1>
+            </div>
+        </div>
+		<div class="list">
+            <ion-md-input placeholder="Nome" highlight-color="positive" type="text" ng-model="usuario.nome" name="nome" ng-required="true" ></ion-md-input>
+            <ion-md-input placeholder="Email" highlight-color="positive" type="text" ng-model="usuario.email" ng-required="true" ></ion-md-input>
+			<ion-md-input placeholder="Senha" highlight-color="positive" type="password" ng-model="usuario.senha" name="senha" ng-required="true" ></ion-md-input>            
+            <button id="signup-button6" class="button button-positive button-full ink icon-right ion-checkmark-round" ng-disabled="newForm.$invalid" ng-click="criar()">Criar</button>
+        </div>        
+		<a ui-sref="login" id="login-button5" class="button button-full button-assertive ink button-outline icon-right ion-close-round">Cancelar</a>
+    </ion-content>
+</ion-nav-view>

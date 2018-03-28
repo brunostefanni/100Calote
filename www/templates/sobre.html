@@ -1,0 +1,53 @@
+<ion-view title="<i class='icon ion-help'></i> Sobre">
+    <ion-content overflow-scroll="true" padding="true" class="has-header" style="background: url(img/login.jpg) center; background-size: cover;" ng-controller="sobreCtrl">
+		<h2>100Calote</h4>
+		<br/>
+		<h4>Aplicativo para cobrar dúvidas de amigos sem perder a amizade!</h4>		
+		<h4> Tem vergonha de cobrar quem te deve? Deixa que a gente cobra para você :D</h4>
+		<h4>Funcionalidades:</h4>
+		<div class="list list-inset stable-bg"> 
+			<div class="item"> - Visualizar quem te deve </div> 
+			<div class="item"> - Visualizar pra quem você deve </div> 
+			<div class="item"> - Protestar dívida </div> 
+			<div class="item"> - Incluir nova dívida </div> 
+			<div class="item"> - Quitar dívida </div> 
+		</div>
+						
+		<div class=" list card stable-bg">
+				<div class="item item-divider " >                 
+					Compartilhe essa idéia:
+				</div>
+
+				<div class="item" >  
+					<div class="item item-body">
+						<button class="button button-block button-positive item-icon-left" ng-click="facebookShare()">
+							<i class="icon ion-social-facebook"></i>
+							Facebook
+						</button>
+					</div>
+					<div class="item item-body">
+						<button class="button button-block button-calm item-icon-left" ng-click="twitterShare()">
+							<i class="icon ion-social-twitter"></i>
+							Twitter
+						</button>
+					</div>
+					<div class="item item-body">
+						<button class="button button-block button-balanced item-icon-left" ng-click="whatsappShare()">
+							<i class="icon ion-social-whatsapp"></i>
+							WhatsApp
+						</button>
+					</div>
+					<div class="item item-body">
+						<button class="button button-block button-stable item-icon-left" ng-click="OtherShare()">
+							<i class="icon ion-android-share-alt"></i>
+							Outro
+						</button>
+					</div>
+				</div>    
+		</div>
+		<br/>
+		<h5>Sugestões, críticas ou mais informações: <a href="#" onclick="window.open('http://www.brunostefanni.com.br', '_system');">www.brunostefanni.com.br</a> </h5>
+		
+		<h5><a href="#" onclick="window.open('https://twitter.com/BrunoStefanni', '_system');">Siga @BrunoStefanni</a></h5>
+	</ion-content>
+</ion-view>

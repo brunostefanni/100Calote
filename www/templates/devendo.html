@@ -1,0 +1,108 @@
+<style>
+.item{
+	min-height: 25px !important;
+}
+.item.item-divider {
+	border-bottom: solid 1px #414141 !important;		
+}
+.item.item-total{
+	margin-top: -10px;
+    margin-bottom: 18px;	
+}
+.ion-edit:before {
+	font-size: 20px !important;
+ }
+</style>
+
+<ion-view title="<i class='icon ion-sad-outline'></i> Devendo" id="page9" cache-view="false" >
+    <ion-content overflow-scroll="true" padding="true" class="has-header" ng-controller="devendoCtrl">
+        <ion-refresher
+            pulling-text="Baixe para atualizar..."
+            on-refresh="doRefresh()">
+        </ion-refresher>
+        
+        <script id="my-modal.html" type="text/ng-template">
+		  <ion-modal-view style="width: 90%; height: 90%; top: 5%; left: 5%; right: 5%; bottom: 5%;">              
+			<ion-header-bar class="bar-dark">
+			  <h1 class="title">Visualizar</h1>
+			  <div class="button button-clear" ng-click="closeModal()"><span class="icon ion-close"></span></div>
+			</ion-header-bar>
+			<ion-content>
+                <form class="list" ng-hide="showProtestar">
+                    
+                    <!--<ion-header-bar class="bar-positive fix-buttons">
+                        <button class="button" ng-click="cancel()">Cancel</button>
+                        <h1 class="title">{{ pageTitle }}</h1>
+                        <button class="button" ng-click="saveItem(itemEdit.$valid)"  animate-on-loading data-text="Post">Post</button>
+                    </ion-header-bar>-->
+                    
+                    
+                    <label class="item item-input">
+                        <span class="input-label">Devendo para</span>
+                        <input type="text" placeholder="" ng-model="item.nome" disabled="disabled">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">E-mail</span>
+                        <input type="text" placeholder="" ng-model="item.email" disabled="disabled">
+                    </label>
+                    <label class="item item-input">
+                        <span class="input-label">Descrição</span>
+                        <input type="text" placeholder=""  ng-model="item.descricao" disabled="disabled">
+                    </label>
+					<label class="item item-input">
+                        <span class="input-label">Valor</span>
+                        <input type="text" placeholder=""  ng-model="item.valor" disabled="disabled">
+                    </label>
+                    <!--<label class="item item-input" ng-if="item.data">
+                        <span class="input-label">Data</span>
+                        <input type="text" placeholder="" disabled="disabled" ng-value="{{item.data | date:'dd MMM yyyy'}}">
+                    </label>-->
+                    <label class="item item-select">
+                        <span class="input-label">Cobrança</span>
+                        <select ng-model="item.cobranca" disabled="disabled">
+                            <option value="S">Semanal</option>
+                            <option value="D">Diária</option>
+                            <option value="Q">Quinzenal</option>
+                            <option value="M">Mensal</option>
+                        </select>
+                    </label>
+                    
+                    <button id="novo-button8" class="button button-dark button-block icon-right ion-thumbsdown" ng-click="protestar()">Protestar</button>
+                </form>                
+                
+                <div ng-show="showProtestar">
+                    <label class="item item-input text">
+                        <textarea placeholder="Argumento" rows="10" ng-model="item.argumento"></textarea>
+                    </label>
+                    
+                    <button id="novo-button8" class="button button-positive-900  button-block icon-right ion-paper-airplane" ng-click="enviar()">Enviar</button>
+                </div>
+                
+			</ion-content>
+		  </ion-modal-view>
+		</script>
+		
+		 <div class="list animate-fade-slide-in-right">
+		  <span ng-show="datas.length" ng-repeat="item in datas track by $index">
+			  <div class="item item-divider" >
+				{{::item.Nome}} 
+			  </div>			  
+			  <a class="item item-icon-right" href="#/side-menu21/devendo" ng-click="openModal($parent.$index+'_'+subItem.id)"  ng-repeat="subItem in item.Detalhes track by $index">
+				<i class="icon ion-edit"></i>				
+                {{::subItem.descricao}} / R$ {{::subItem.valor}}	<br/>
+                <!--<span ng-if="subItem.data">
+                    <h5>desde {{::subItem.data | date:'dd/MM/yyyy'}}</h5>
+                </span>-->
+			  </a>
+			  <div class="item item-divider item-total" >
+				Total R$ {{::item.Valor}}
+			  </div>
+		  </span>
+          <span ng-hide="datas.length">
+              <div class="item item-divider" >
+				Parabéns você não deve ninguém!
+			  </div>
+          </span>
+		</div>
+    </ion-content>
+</ion-view>

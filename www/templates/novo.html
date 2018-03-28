@@ -1,0 +1,93 @@
+<style>
+    .has-error {
+    border: 1px solid red !important;
+    }
+	.item-md-label .input-label{
+		color: black;
+		font-weight: bold;
+	}
+	.cssFade {
+		transition: 0.5s linear all;
+		opacity: 1;
+	}
+	.cssFade.ng-hide {
+		opacity: 0;
+	}
+</style>
+
+<ion-view title="Novo" id="page11" cache-view="false">
+    <ion-nav-bar class="bar-dark">
+        <ion-nav-back-button class="button-icon icon ion-ios-arrow-back no-text"></ion-nav-back-button>
+    </ion-nav-bar>   
+    <ion-content padding="true" class="has-header" ng-controller="novoCtrl" class="bar-dark">
+        <form class="list" name="newForm">
+			<div class="list">			 
+			<div ng-hide="inserirDados || pesquisarAgenda || true">
+				<button class="button button-flat button-positive-900 button-full ink  icon-right ion-search" ng-click="getAllContacts()">Contato da agenda</button> 			
+				<button class="button button-full ink  button-outline button-assertive">ou</button>			
+				<button class="button button-flat button-positive-900 button-full ink icon-right ion-plus" ng-click="inserirDados = 'avulso'">Inserir avulso</button>						
+			</div>
+			<div class="cssFade " ng-show="inserirDados || true">
+				Tipo da cobrança
+				<div class="item item-checkbox">
+					<label class="checkbox">
+						<input type="checkbox" value="on" ng-model="cobraSms" >
+					</label>
+					SMS
+				</div>
+				<div class="item item-checkbox">
+					<label class="checkbox">
+						<input type="checkbox" value="on" ng-model="cobraEmail">
+					</label>
+					E-mail
+				</div>
+				<ion-md-input placeholder="Telefone" highlight-color="positive" type="text" ng-model="item.telefone" ng-show="cobraSms"></ion-md-input>
+				<ion-md-input placeholder="E-mail" highlight-color="positive" type="text" ng-model="item.emailDevedor" ng-show="cobraEmail"></ion-md-input>
+				<ion-md-input placeholder="Nome do Devedor" highlight-color="positive" type="text" ng-model="item.nomeDevedor" ng-disabled="inserirDados == 'contato'" ></ion-md-input>								
+				<ion-md-input placeholder="Descrição" highlight-color="positive" type="text" ng-model="item.descricao" ></ion-md-input>
+				<ion-md-input placeholder="Valor" highlight-color="positive" type="text" ng-model="item.Valor" ></ion-md-input>
+
+				<label class="item item-input item-select">
+					<div class="input-label">
+						Período da Cobrança
+					</div>
+					<select ng-model="item.cobranca">
+						<option value="M" ng-selected="true">Mensal</option>
+						<option value="S">Semanal</option>
+						<option value="Q">Quinzenal</option>
+					</select>
+				</label>
+				<!--<ion-toggle toggle-class="toggle-positive" ng-checked="false" ng-model="item.parcelado">Parcelado</ion-toggle>
+				<label class="item item-input item-select" ng-show="item.parcelado">
+					<div class="input-label">
+						Qtd Parcelas
+					</div>
+					<select ng-model="item.cobranca">
+						<option value="M" ng-selected="true">Mensal</option>
+						<option value="S">Semanal</option>
+						<option value="D">Diária</option>
+						<option value="Q">Quinzenal</option>
+					</select>
+				</label>-->
+				
+				<button id="novo-button8" class="button button-full ink button-positive-900 icon-right ion-checkmark-round" ng-disabled="newForm.$invalid" ng-click="salvar()">Salvar</button>
+			</div>
+			</div>
+			
+			<div class="cssFade " ng-if="pesquisarAgenda">
+				{{contacts}}
+				<div class="list"> 
+					<div class="item item-button-right"> Mom 
+					<button class="button button-balanced ink"> 
+					<i class="icon ion-ios-telephone"></i> 
+					</button> </div> 
+					<div class="item item-button-right"> Dad 
+					<button class="button button-balanced ink"> 
+					<i class="icon ion-ios-telephone"></i> 
+					</button> </div> 
+				</div>
+			</div>
+		</form>                
+                
+    </ion-content>
+</ion-view>
